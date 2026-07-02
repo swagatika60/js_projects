@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>TaskFlow — To-Do</title>
+  </head>
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-icon" aria-hidden="true">✓</span>
+          <div>
+            <h1 class="brand-title">TaskFlow</h1>
+            <p class="brand-tagline">Organize tasks & reminders</p>
+          </div>
+        </div>
+        <form class="search-form" role="search">
+          <label class="visually-hidden" for="search-input">Search tasks</label>
+          <input
+            id="search-input"
+            class="input"
+            type="search"
+            name="search"
+            placeholder="Search tasks..."
+            autocomplete="off"
+          />
+        </form>
+      </header>
+
+      <main class="app-main">
+        <aside class="sidebar" aria-label="Overview and settings">
+          <section class="stats-grid" aria-label="Task statistics">
+            <article class="stat-card">
+              <span class="stat-value" id="stat-active">0</span>
+              <span class="stat-label">Active</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-value" id="stat-done">0</span>
+              <span class="stat-label">Completed</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-value" id="stat-reminders">0</span>
+              <span class="stat-label">Reminders</span>
+            </article>
+            <article class="stat-card stat-card--alert">
+              <span class="stat-value" id="stat-overdue">0</span>
+              <span class="stat-label">Overdue</span>
+            </article>
+          </section>
+
+          <section class="panel">
+            <h2 class="panel-title">Data & backup</h2>
+            <p id="save-status" class="save-status" aria-live="polite"></p>
+            <div class="btn-group">
+              <button type="button" id="save-now" class="btn btn--primary">Save now</button>
+              <button type="button" id="export-data" class="btn btn--ghost">Export</button>
+              <label class="btn btn--ghost btn--file">
+                Import
+                <input type="file" id="import-data" accept="application/json,.json" hidden />
+              </label>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h2 class="panel-title">Notifications</h2>
+            <p class="panel-desc">Get browser alerts when reminders are due.</p>
+            <button type="button" id="enable-notify" class="btn btn--accent btn--block">
+              Enable reminders
+            </button>
+          </section>
+        </aside>
+
+        <div class="content">
+          <section class="panel panel--add">
+            <h2 class="panel-title">New task</h2>
+            <form class="add-form" id="add-form">
+              <div class="form-row">
+                <label class="field field--grow">
+                  <span class="field-label">Task name</span>
+                  <input
+                    id="todo-input"
+                    class="input"
+                    type="text"
+                    name="add"
+                    placeholder="What do you need to do?"
+                    autocomplete="off"
+                    required
+                  />
+                </label>
+              </div>
+              <div class="form-row form-row--split">
+                <label class="field">
+                  <span class="field-label">Reminder (optional)</span>
+                  <input
+                    id="remind-at"
+                    class="input"
+                    type="datetime-local"
+                    name="remindAt"
+                  />
+                </label>
+                <button type="submit" class="btn btn--primary btn--submit">Add task</button>
+              </div>
+            </form>
+          </section>
+
+          <section class="content-section" aria-labelledby="reminders-heading">
+            <div class="section-header">
+              <h2 id="reminders-heading" class="section-title">
+                <span class="section-icon section-icon--bell" aria-hidden="true"></span>
+                Reminder blocks
+              </h2>
+              <p class="section-desc">Tasks sorted by due date</p>
+            </div>
+            <div id="reminder-blocks" class="blocks-grid" aria-live="polite"></div>
+          </section>
+
+          <section class="content-section" aria-labelledby="tasks-heading">
+            <div class="section-header section-header--row">
+              <div>
+                <h2 id="tasks-heading" class="section-title">
+                  <span class="section-icon section-icon--list" aria-hidden="true"></span>
+                  General tasks
+                </h2>
+                <p class="section-desc">Tasks without a reminder</p>
+              </div>
+              <button type="button" id="clear-completed" class="btn btn--ghost btn--sm" disabled>
+                Clear completed
+              </button>
+            </div>
+            <div id="regular-block" class="task-list" aria-live="polite"></div>
+          </section>
+        </div>
+      </main>
+
+      <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
