@@ -1,4 +1,4 @@
-const apiKey = '7b2c175727d87ec48c78a32805943c48';
+const apiKey = 'Your_API_KEY';
 
 const loadingSpinner = document.getElementById('loading-spinner');
 const locationUI = document.getElementById('location-ui');
