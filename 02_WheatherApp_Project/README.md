@@ -23,9 +23,9 @@ You will need a free API key from [OpenWeatherMap](https://openweathermap.org/ap
 
 ### Installation
 1. **Clone the repo:** `git clone https://github.com/your-username/weather-dashboard.git`
-2. **Navigate to the folder:** `cd weather-dashboard`
-3. **Add your API Key:** Open `pr.js` and replace the placeholder with your actual key.
-4. **Run the app:** Open `index.html` in your browser or use a "Live Server" extension.
+2. **Navigate to the folder:** `cd 02_WheatherApp_Project`
+4. **Add your API Key:** Open `pr.js` and replace the placeholder with your actual key.
+5. **Run the app:** Open `index.html` in your browser or use a "Live Server" extension.
 
 ## 📂 Project Structure
 * `index.html`: Main structure.
