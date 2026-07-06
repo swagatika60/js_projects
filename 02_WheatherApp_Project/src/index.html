@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard</title>
+  <meta name="description" content="Modern weather dashboard with forecast, history, and location support.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="default-bg">
+  
+  <!-- Main Application Wrapper -->
+  <main class="app-container">
+    
+    <!-- App Header -->
+    <header class="app-header">
+      <div class="header-content">
+        <span class="eyebrow">Weather Portfolio</span>
+        <h1>Weather Dashboard</h1>
+        <p>Live weather data, forecasts, and search history in a polished app.</p>
+      </div>
+      <button id="theme-toggle" class="small-btn" aria-label="Toggle Dark Mode">Dark</button>
+    </header>
+
+    <!-- Global Alerts & Loaders -->
+    <div id="alert-message" class="alert hidden" role="alert"></div>
+    
+    <div id="loading-spinner" class="spinner hidden" aria-live="polite">
+      <div class="loader"></div>
+      <p>Fetching the skies...</p>
+    </div>
+
+    <!-- 1. Welcome / Location UI -->
+    <section id="location-ui" class="ui welcome-panel">
+      <div class="welcome-card">
+        <span class="eyebrow">Start with weather</span>
+        <h2>Find weather for any city.</h2>
+        <p>Tap your location or search manually to get live weather and short-term forecasts.</p>
+
+        <div class="button-row">
+          <button id="location-btn" class="primary-btn">📍 Use My Location</button>
+          <button id="go-to-search-btn" class="secondary-btn">🔍 Search Manually</button>
+        </div>
+
+        <div class="card-stat">
+          <strong>Tip:</strong> Your last searched city opens automatically next time.
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Main Weather Dashboard UI -->
+    <!-- Added 'dashboard-spaced' to create perfect gaps between sections -->
+    <section id="weather-ui" class="ui hidden dashboard-layout dashboard-spaced">
+      
+      <!-- Top Navigation & Search -->
+      <nav class="top-panel">
+        <!-- Changed to a form so pressing 'Enter' automatically submits the search -->
+        <form class="search-box" id="search-form" onsubmit="event.preventDefault();">
+          <input type="text" id="search-bar" placeholder="Search a city…" aria-label="Search for a city">
+          <button id="search-btn" type="submit">Search</button>
+        </form>
+
+        <div class="button-row compact">
+          <button id="refresh-btn" class="secondary-btn" aria-label="Refresh Data">⟳ Refresh</button>
+          <button id="unit-toggle" class="secondary-btn" aria-label="Toggle Unit">°F</button>
+          <button id="back-btn" class="secondary-btn" aria-label="Go to Home">Home</button>
+        </div>
+      </nav>
+
+      <!-- Current Weather Overview -->
+      <div class="weather-grid">
+        
+        <!-- Primary Weather Card -->
+        <article class="weather-card primary-card">
+          <header class="weather-header">
+            <div class="weather-titles">
+              <span class="eyebrow">Current Place</span>
+              <h2 id="city-name">City Name</h2>
+              <p id="local-time" class="time-text">--:--</p>
+            </div>
+            <img id="weather-icon" src="" alt="Weather condition icon" class="weather-icon hidden">
+          </header>
+
+          <div class="temp-card">
+            <div class="temp-display">
+              <h1 id="temperature">--°C</h1>
+              <p id="condition">Condition</p>
+            </div>
+            <p id="weather-description" class="description-text">Loading weather details...</p>
+          </div>
+        </article>
+
+        <!-- Secondary Details Grid -->
+        <div class="detail-grid">
+          <div class="detail-card"><small>Feels Like</small><span id="feels-like">--</span></div>
+          <div class="detail-card"><small>Humidity</small><span id="humidity">--</span></div>
+          <div class="detail-card"><small>Wind</small><span id="wind">--</span></div>
+          <div class="detail-card"><small>Pressure</small><span id="pressure">--</span></div>
+          <div class="detail-card"><small>Sunrise</small><span id="sunrise">--:--</span></div>
+          <div class="detail-card"><small>Sunset</small><span id="sunset">--:--</span></div>
+        </div>
+      </div>
+
+      <!-- 5-Day Forecast -->
+      <section class="forecast-section">
+        <header class="section-heading">
+          <div class="heading-text">
+            <h3>5-Day Forecast</h3>
+            <p>Daily weather outlook for your selected city.</p>
+          </div>
+        </header>
+        <ul id="forecast-list" class="forecast-list"></ul>
+      </section>
+
+      <!-- Search History -->
+      <section class="history-section">
+        <header class="section-heading">
+          <div class="heading-text">
+            <h3>Recent Searches</h3>
+            <p>Tap to reload a previous location.</p>
+          </div>
+        </header>
+        <ul id="history-list" class="horizontal-list"></ul>
+      </section>
+
+    </section>
+  </main>
+
+  <script src="pr.js"></script>
+</body>
+</html>
