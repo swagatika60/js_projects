@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 /* --- Reset & Base Styles --- */
+
 * {
   margin: 0;
   padding: 0;
@@ -42,7 +43,7 @@ body.light-mode {
 .clear-bg { background: linear-gradient(135deg, #56CCF2, #2F80ED); }
 
 /* --- Layout Containers --- */
-.app-container {
+. app-container {
   width: min(98%, 1100px);
   min-height: 620px;
   padding: 24px;
